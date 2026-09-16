@@ -1,0 +1,17 @@
+# Arquivos compilados do Java
+*.class
+
+# Configurações do Eclipse
+.metadata/
+.settings/
+.classpath
+.project
+
+# Configurações de outras IDEs
+.vscode/
+.idea/
+*.iml
+
+# Pastas de compilação
+bin/
+target/
