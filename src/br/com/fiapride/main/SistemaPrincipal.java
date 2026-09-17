@@ -1,5 +1,6 @@
 package br.com.fiapride.main;
 
+import br.com.fiapride.model.Marca;
 import br.com.fiapride.model.Tenis;
 
 public class SistemaPrincipal {
@@ -8,31 +9,39 @@ public class SistemaPrincipal {
 
         System.out.println("===== SISTEMA DE TÊNIS =====");
 
-        // Criando o primeiro tênis através do construtor
+        // Criando os objetos Marca
+        Marca nike = new Marca("Nike");
+        Marca adidas = new Marca("Adidas");
+
+        // Criando os objetos Tênis associados às marcas
         Tenis tenis1 = new Tenis(
-                "Nike Air Max",
+                "Air Max",
                 "Preto",
                 42,
-                599.90
+                599.90,
+                nike
         );
 
-        // Criando o segundo tênis através do construtor
         Tenis tenis2 = new Tenis(
-                "Adidas Ultraboost",
+                "Ultraboost",
                 "Branco",
                 40,
-                799.90
+                799.90,
+                adidas
         );
 
-        // Exibindo os dados através dos getters
+        // Exibindo os dados do primeiro tênis
         System.out.println("\n--- Tênis 1 ---");
         System.out.println("Modelo: " + tenis1.getModelo());
+        System.out.println("Marca: " + tenis1.getMarca().getNome());
         System.out.println("Cor: " + tenis1.getCor());
         System.out.println("Tamanho: " + tenis1.getTamanho());
         System.out.println("Preço: R$ " + tenis1.getPreco());
 
+        // Exibindo os dados do segundo tênis
         System.out.println("\n--- Tênis 2 ---");
         System.out.println("Modelo: " + tenis2.getModelo());
+        System.out.println("Marca: " + tenis2.getMarca().getNome());
         System.out.println("Cor: " + tenis2.getCor());
         System.out.println("Tamanho: " + tenis2.getTamanho());
         System.out.println("Preço: R$ " + tenis2.getPreco());
@@ -57,31 +66,19 @@ public class SistemaPrincipal {
 
         tenis2.aplicarDesconto(150);
 
-        // Testando construtor com tamanho inválido
-        System.out.println("\n===== TESTE DE CONSTRUTOR =====");
-
-        Tenis tenis3 = new Tenis(
-                "Tênis Teste",
-                "Azul",
-                -10,
-                300.00
-        );
-
-        System.out.println("Modelo: " + tenis3.getModelo());
-        System.out.println("Tamanho: " + tenis3.getTamanho());
-        System.out.println("Preço: R$ " + tenis3.getPreco());
-
-        // Estado final
-        System.out.println("\n===== ESTADO FINAL =====");
+        // Demonstrando a associação
+        System.out.println("\n===== TESTE DE ASSOCIAÇÃO =====");
 
         System.out.println(
-                "Tênis 1: " + tenis1.getModelo()
-                + " | Preço: R$ " + tenis1.getPreco()
+                "O tênis " + tenis1.getModelo()
+                + " pertence à marca "
+                + tenis1.getMarca().getNome()
         );
 
         System.out.println(
-                "Tênis 2: " + tenis2.getModelo()
-                + " | Preço: R$ " + tenis2.getPreco()
+                "O tênis " + tenis2.getModelo()
+                + " pertence à marca "
+                + tenis2.getMarca().getNome()
         );
     }
 }

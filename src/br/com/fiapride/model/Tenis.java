@@ -8,12 +8,16 @@ public class Tenis {
     private int tamanho;
     private double preco;
 
+    // Associação com a classe Marca
+    private Marca marca;
+
     // Construtor
-    public Tenis(String modelo, String cor, int tamanho, double preco) {
+    public Tenis(String modelo, String cor, int tamanho, double preco, Marca marca) {
         this.setModelo(modelo);
         this.setCor(cor);
         this.setTamanho(tamanho);
         this.setPreco(preco);
+        this.marca = marca;
     }
 
     // Método para alterar o preço
@@ -97,5 +101,10 @@ public class Tenis {
         } else {
             System.out.println("Erro: o preço deve ser maior que zero.");
         }
+    }
+
+    // Getter da marca
+    public Marca getMarca() {
+        return this.marca;
     }
 }
