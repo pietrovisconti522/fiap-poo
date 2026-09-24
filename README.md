@@ -1,60 +1,90 @@
-## Aula 05 - Associação de Objetos
+## Aula 06 - Herança
 
-Na Aula 05 foi implementado o relacionamento entre objetos.
+Na Aula 06 foi implementado o conceito de herança no projeto pessoal.
 
-No projeto pessoal, a classe `Tenis` foi associada à classe `Marca`.
+A classe `Tenis` foi utilizada como superclasse.
 
-Um tênis possui uma marca, representada pelo atributo:
+Foram criadas duas subclasses:
 
-private Marca marca;
+- `TenisCorrida`
+- `TenisBasquete`
 
-A classe `Marca` possui o atributo `nome`.
+## Superclasse
 
-A associação permite que o objeto `Tenis` acesse informações do objeto `Marca`.
+A classe `Tenis` possui os atributos:
 
-Exemplo:
+- `modelo`
+- `cor`
+- `tamanho`
+- `preco`
+- `marca`
 
-tenis1.getMarca().getNome();
+Esses atributos são comuns aos diferentes tipos de tênis.
 
-Nesse caso, o objeto `Tenis` acessa sua `Marca` e depois consulta o nome dela.
+## Subclasse TenisCorrida
 
-## Classes da Aula 05
+A classe `TenisCorrida` herda da classe `Tenis`.
 
-### Tenis
+Além dos atributos herdados, possui:
 
-Possui:
+- `tipoPisada`
 
-- modelo
-- cor
-- tamanho
-- preco
-- marca
+A relação utilizada é:
 
-### Marca
+TenisCorrida É UM Tenis.
 
-Possui:
+## Subclasse TenisBasquete
 
-- nome
+A classe `TenisBasquete` também herda da classe `Tenis`.
 
-## Conceito de Associação
+Além dos atributos herdados, possui:
 
-A associação foi utilizada para representar o relacionamento:
+- `canoAlto`
 
-Tenis TEM UMA Marca.
+A relação utilizada é:
 
-O objeto `Marca` é criado separadamente e depois passado para o construtor de `Tenis`.
+TenisBasquete É UM Tenis.
 
-Isso demonstra a passagem de objetos como parâmetros e a comunicação entre objetos.
+## Uso do extends
+
+As classes filhas utilizam a palavra `extends`:
+
+public class TenisCorrida extends Tenis
+
+public class TenisBasquete extends Tenis
+
+Isso permite que as subclasses reutilizem atributos e métodos da classe `Tenis`.
+
+## Uso do super
+
+Os construtores das subclasses utilizam `super()` para chamar o construtor da classe `Tenis`.
+
+Dessa forma, a superclasse continua responsável pela inicialização dos seus próprios atributos.
+
+## Reaproveitamento de código
+
+Os métodos `alterarPreco()` e `aplicarDesconto()` não precisaram ser repetidos nas subclasses.
+
+Eles são herdados diretamente da classe `Tenis`.
 
 ## Testes realizados
 
 Foram realizados testes para:
 
-- Criar objetos da classe `Marca`.
-- Criar objetos da classe `Tenis`.
-- Associar cada tênis a uma marca.
-- Consultar a marca através do tênis.
-- Consultar o nome da marca através do objeto associado.
-- Alterar o preço do tênis.
-- Aplicar desconto.
-- Testar regras de negócio.
+- Criar um tênis de corrida.
+- Criar um tênis de basquete.
+- Utilizar atributos específicos das subclasses.
+- Acessar atributos herdados.
+- Utilizar métodos herdados.
+- Alterar o preço de um objeto filho.
+- Aplicar desconto em um objeto filho.
+- Verificar a relação de herança entre as classes.
+
+## Conceito É UM
+
+A herança foi utilizada porque:
+
+- TenisCorrida É UM Tenis.
+- TenisBasquete É UM Tenis.
+
+Esse relacionamento representa uma especialização da classe `Tenis`.
