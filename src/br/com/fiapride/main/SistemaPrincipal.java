@@ -2,6 +2,8 @@ package br.com.fiapride.main;
 
 import br.com.fiapride.model.Marca;
 import br.com.fiapride.model.Tenis;
+import br.com.fiapride.model.TenisBasquete;
+import br.com.fiapride.model.TenisCorrida;
 
 public class SistemaPrincipal {
 
@@ -9,76 +11,71 @@ public class SistemaPrincipal {
 
         System.out.println("===== SISTEMA DE TÊNIS =====");
 
-        // Criando os objetos Marca
+        // Criando as marcas
         Marca nike = new Marca("Nike");
         Marca adidas = new Marca("Adidas");
 
-        // Criando os objetos Tênis associados às marcas
-        Tenis tenis1 = new Tenis(
-                "Air Max",
+        // Criando um tênis de corrida
+        TenisCorrida tenisCorrida = new TenisCorrida(
+                "Air Zoom Pegasus",
                 "Preto",
                 42,
-                599.90,
-                nike
+                699.90,
+                nike,
+                "Neutra"
         );
 
-        Tenis tenis2 = new Tenis(
-                "Ultraboost",
-                "Branco",
-                40,
+        // Criando um tênis de basquete
+        TenisBasquete tenisBasquete = new TenisBasquete(
+                "D.O.N. Issue",
+                "Vermelho",
+                41,
                 799.90,
-                adidas
+                adidas,
+                true
         );
 
-        // Exibindo os dados do primeiro tênis
-        System.out.println("\n--- Tênis 1 ---");
-        System.out.println("Modelo: " + tenis1.getModelo());
-        System.out.println("Marca: " + tenis1.getMarca().getNome());
-        System.out.println("Cor: " + tenis1.getCor());
-        System.out.println("Tamanho: " + tenis1.getTamanho());
-        System.out.println("Preço: R$ " + tenis1.getPreco());
+        // Exibindo dados do tênis de corrida
+        System.out.println("\n--- TÊNIS DE CORRIDA ---");
 
-        // Exibindo os dados do segundo tênis
-        System.out.println("\n--- Tênis 2 ---");
-        System.out.println("Modelo: " + tenis2.getModelo());
-        System.out.println("Marca: " + tenis2.getMarca().getNome());
-        System.out.println("Cor: " + tenis2.getCor());
-        System.out.println("Tamanho: " + tenis2.getTamanho());
-        System.out.println("Preço: R$ " + tenis2.getPreco());
+        System.out.println("Modelo: " + tenisCorrida.getModelo());
+        System.out.println("Marca: " + tenisCorrida.getMarca().getNome());
+        System.out.println("Cor: " + tenisCorrida.getCor());
+        System.out.println("Tamanho: " + tenisCorrida.getTamanho());
+        System.out.println("Preço: R$ " + tenisCorrida.getPreco());
+        System.out.println("Tipo de pisada: " + tenisCorrida.getTipoPisada());
 
-        // Alterando o preço
-        System.out.println("\n===== ALTERANDO PREÇO =====");
+        // Exibindo dados do tênis de basquete
+        System.out.println("\n--- TÊNIS DE BASQUETE ---");
 
-        tenis1.alterarPreco(699.90);
+        System.out.println("Modelo: " + tenisBasquete.getModelo());
+        System.out.println("Marca: " + tenisBasquete.getMarca().getNome());
+        System.out.println("Cor: " + tenisBasquete.getCor());
+        System.out.println("Tamanho: " + tenisBasquete.getTamanho());
+        System.out.println("Preço: R$ " + tenisBasquete.getPreco());
 
-        // Aplicando desconto
-        System.out.println("\n===== APLICANDO DESCONTO =====");
+        if (tenisBasquete.isCanoAlto()) {
+            System.out.println("Cano alto: Sim");
+        } else {
+            System.out.println("Cano alto: Não");
+        }
 
-        tenis1.aplicarDesconto(10);
+        // Testando método herdado
+        System.out.println("\n--- TESTE DE HERANÇA ---");
 
-        // Testando preço inválido
-        System.out.println("\n===== TESTE DE VALOR INVÁLIDO =====");
-
-        tenis2.alterarPreco(-100);
-
-        // Testando desconto inválido
-        System.out.println("\n===== TESTE DE DESCONTO INVÁLIDO =====");
-
-        tenis2.aplicarDesconto(150);
-
-        // Demonstrando a associação
-        System.out.println("\n===== TESTE DE ASSOCIAÇÃO =====");
+        tenisCorrida.alterarPreco(749.90);
 
         System.out.println(
-                "O tênis " + tenis1.getModelo()
-                + " pertence à marca "
-                + tenis1.getMarca().getNome()
+                "Novo preço do tênis de corrida: R$ "
+                + tenisCorrida.getPreco()
         );
 
+        // Testando desconto herdado
+        tenisBasquete.aplicarDesconto(10);
+
         System.out.println(
-                "O tênis " + tenis2.getModelo()
-                + " pertence à marca "
-                + tenis2.getMarca().getNome()
+                "Preço do tênis de basquete após desconto: R$ "
+                + tenisBasquete.getPreco()
         );
     }
 }
