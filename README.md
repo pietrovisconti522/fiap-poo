@@ -1,90 +1,56 @@
-## Aula 06 - Herança
+## Aula 07 - Polimorfismo de Sobrescrita
 
-Na Aula 06 foi implementado o conceito de herança no projeto pessoal.
+Na Aula 07 foi implementado o conceito de polimorfismo de sobrescrita.
 
-A classe `Tenis` foi utilizada como superclasse.
+Foi criado o método `calcularDesempenho()` na superclasse `Tenis`.
 
-Foram criadas duas subclasses:
+As subclasses `TenisCorrida` e `TenisBasquete` sobrescrevem esse método utilizando a anotação `@Override`.
+
+## Método da superclasse
+
+A classe `Tenis` possui o método:
+
+`calcularDesempenho()`
+
+O método possui um comportamento genérico para um tênis.
+
+## Sobrescrita
+
+A classe `TenisCorrida` sobrescreve o método para apresentar um comportamento específico para tênis de corrida.
+
+A classe `TenisBasquete` também sobrescreve o método para apresentar um comportamento específico para tênis de basquete.
+
+## @Override
+
+Foi utilizada a anotação `@Override` para indicar que os métodos das subclasses estão sobrescrevendo o método existente na classe `Tenis`.
+
+As três classes possuem a mesma assinatura:
+
+`public String calcularDesempenho()`
+
+## Lista polimórfica
+
+Foi criada uma lista do tipo `List<Tenis>`.
+
+Essa lista recebeu objetos das subclasses:
 
 - `TenisCorrida`
 - `TenisBasquete`
 
-## Superclasse
+Como as duas classes são tipos de `Tenis`, elas podem ser armazenadas na mesma lista.
 
-A classe `Tenis` possui os atributos:
+## Teste de polimorfismo
 
-- `modelo`
-- `cor`
-- `tamanho`
-- `preco`
-- `marca`
+Foi utilizado um laço `for` para percorrer a lista.
 
-Esses atributos são comuns aos diferentes tipos de tênis.
+O mesmo comando:
 
-## Subclasse TenisCorrida
+`tenisAtual.calcularDesempenho()`
 
-A classe `TenisCorrida` herda da classe `Tenis`.
+produziu resultados diferentes dependendo do objeto que estava sendo percorrido.
 
-Além dos atributos herdados, possui:
+## Conceito aprendido
 
-- `tipoPisada`
+O polimorfismo permite utilizar uma referência da superclasse para trabalhar com diferentes subclasses.
 
-A relação utilizada é:
-
-TenisCorrida É UM Tenis.
-
-## Subclasse TenisBasquete
-
-A classe `TenisBasquete` também herda da classe `Tenis`.
-
-Além dos atributos herdados, possui:
-
-- `canoAlto`
-
-A relação utilizada é:
-
-TenisBasquete É UM Tenis.
-
-## Uso do extends
-
-As classes filhas utilizam a palavra `extends`:
-
-public class TenisCorrida extends Tenis
-
-public class TenisBasquete extends Tenis
-
-Isso permite que as subclasses reutilizem atributos e métodos da classe `Tenis`.
-
-## Uso do super
-
-Os construtores das subclasses utilizam `super()` para chamar o construtor da classe `Tenis`.
-
-Dessa forma, a superclasse continua responsável pela inicialização dos seus próprios atributos.
-
-## Reaproveitamento de código
-
-Os métodos `alterarPreco()` e `aplicarDesconto()` não precisaram ser repetidos nas subclasses.
-
-Eles são herdados diretamente da classe `Tenis`.
-
-## Testes realizados
-
-Foram realizados testes para:
-
-- Criar um tênis de corrida.
-- Criar um tênis de basquete.
-- Utilizar atributos específicos das subclasses.
-- Acessar atributos herdados.
-- Utilizar métodos herdados.
-- Alterar o preço de um objeto filho.
-- Aplicar desconto em um objeto filho.
-- Verificar a relação de herança entre as classes.
-
-## Conceito É UM
-
-A herança foi utilizada porque:
-
-- TenisCorrida É UM Tenis.
-- TenisBasquete É UM Tenis.
-
-Esse relacionamento representa uma especialização da classe `Tenis`.
+Cada objeto pode executar o mesmo método de acordo com seu próprio comportamento.
